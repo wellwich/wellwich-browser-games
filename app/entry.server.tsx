@@ -31,6 +31,7 @@ export default async function handleRequest(
 	}
 
 	responseHeaders.set("Content-Type", "text/html");
+	responseHeaders.set("X-Robots-Tag", "noindex");
 	return new Response(body, {
 		headers: responseHeaders,
 		status: responseStatusCode,

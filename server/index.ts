@@ -11,7 +11,6 @@ const app = new Hono<{
 
 app.use("*", async (c, next) => {
 	await next();
-	c.res.headers.set("X-Robots-Tag", "noindex");
 });
 
 app.get("/api", (c) => {
