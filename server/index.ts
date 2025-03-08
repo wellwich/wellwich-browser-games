@@ -10,7 +10,6 @@ const app = new Hono<{
 }>();
 
 app.use(async (c, next) => {
-	c.set("MY_VAR_IN_VARIABLES", "My variable set in c.set");
 	await next();
 	if (c.req.url.includes("workers.dev")) {
 		c.res.headers.set("X-Robots-Tag", "noindex");
