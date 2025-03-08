@@ -9,8 +9,7 @@ const app = new Hono<{
 	};
 }>();
 
-app.use(async (c, next) => {
-	await next();
+app.use(async (c) => {
 	if (c.req.url.includes("workers.dev")) {
 		c.res.headers.set("X-Robots-Tag", "noindex");
 	}
