@@ -13,7 +13,9 @@ const app = new Hono<{
 app.use("*", async (c, next) => {
 	c.set("MY_VAR_IN_VARIABLES", "My variable set in c.set");
 	await next();
-	c.header("X-Robots-Tag", "noindex");
+	if (c.req.url.includes("workers.dev")) {
+		c.header("X-Robots-Tag", "noindex");
+	}
 });
 
 app.get("/api", (c) => {
