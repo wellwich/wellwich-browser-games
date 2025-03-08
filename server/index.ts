@@ -14,6 +14,10 @@ app.use(async (c, next) => {
 	c.set("MY_VAR_IN_VARIABLES", "My variable set in c.set");
 	await next();
 	c.header("X-Powered-By", "React Router and Hono");
+
+	if (c.req.url.includes("workers.dev")) {
+		c.header("X-Robots-Tag", "noindex");
+	}
 });
 
 app.get("/api", (c) => {
