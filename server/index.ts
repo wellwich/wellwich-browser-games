@@ -1,4 +1,3 @@
-// server/index.ts
 import { Hono } from "hono";
 
 const app = new Hono<{
@@ -10,11 +9,11 @@ const app = new Hono<{
 	};
 }>();
 
-app.use("*", async (c, next) => {
+app.use(async (c, next) => {
 	c.set("MY_VAR_IN_VARIABLES", "My variable set in c.set");
 	await next();
 	if (c.req.url.includes("workers.dev")) {
-		c.header("X-Robots-Tag", "noindex");
+		c.res.headers.set("X-Robots-Tag", "noindex");
 	}
 });
 
