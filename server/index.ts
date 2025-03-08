@@ -12,8 +12,8 @@ const app = new Hono<{
 app.use("*", async (c, next) => {
 	await next();
 	if (c.req.url.includes("workers.dev")) {
+		c.res.headers.set("X-Robots-Tag", "noindex");
 	}
-	c.res.headers.set("X-Robots-Tag", "noindex");
 });
 
 app.get("/api", (c) => {
