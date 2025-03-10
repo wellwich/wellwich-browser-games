@@ -1,19 +1,23 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { GameGenre, GameTitle, gameInfo } from "~/game-info";
 import type { GameInfoType } from "~/game-info";
 
-const GameListContainer = styled.div`
+const GameGenreContainer = styled.div`
     display: flex;
+    flex-direction: column;
     max-width: 960px;
     margin: 0 auto;
-    flex-wrap: wrap;
     gap: 16px;
     padding: 16px;
+    justify-content: center;
+`;
 
-    @media (max-width: 960px) {
-        justify-content: center;
-    }
+const GameListContainer = styled.div`
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: start;
+    padding: 16px;
 
     @media (max-width: 640px) {
         padding: 16px;
@@ -41,6 +45,11 @@ const GameListItemContainer = styled.div`
     }
 `;
 
+const GameGenreTitle = styled.h3`
+    font-size: 24px;
+    margin-bottom: 16px;
+`;
+
 const GameLink = styled.a`
     text-decoration: none;
     color: inherit;
@@ -57,7 +66,7 @@ const GameThumbnail = styled.img`
     height: 180px;
 `;
 
-const GameStyledTitle = styled.h2`
+const GameStyledTitle = styled.h4`
     font-size: 20px;
     margin-bottom: 8px;
 `;
@@ -73,52 +82,29 @@ const GameStyledGenre = styled.p`
     color: #718096;
 `;
 
-const FilterContainer = styled.div`
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 16px;
-    display: flex;
-    justify-content: flex-start;
-`;
-
-const Select = styled.select`
-    padding: 8px;
-    font-size: 16px;
-    border-radius: 4px;
-    border: 1px solid #e2e8f0;
-    background-color: white;
-    color: #2d3748;
-    cursor: pointer;
-`;
-
 export function GameList() {
-	const [selectedGenre, setSelectedGenre] = useState<string>("");
-
-	const handleGenreChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-		setSelectedGenre(event.target.value);
-	};
-
-	const filteredGames = selectedGenre
-		? gameInfo.filter((game) => game.genre === selectedGenre)
-		: gameInfo;
+	const filteredGames = (genre: string) =>
+		genre ? gameInfo.filter((game) => game.genre === genre) : gameInfo;
 
 	return (
 		<>
-			<FilterContainer>
-				<Select value={selectedGenre} onChange={handleGenreChange}>
-					<option value="">すべてのジャンル</option>
-					{Object.entries(GameGenre).map(([key, value]) => (
-						<option key={key} value={key}>
-							{value}
-						</option>
+			<GameGenreContainer>
+				<GameListContainer>
+					{gameInfo.map((game) => (
+						<GameListItem key={game.id} game={game} />
 					))}
-				</Select>
-			</FilterContainer>
-			<GameListContainer>
-				{filteredGames.map((game) => (
-					<GameListItem key={game.id} game={game} />
-				))}
-			</GameListContainer>
+				</GameListContainer>
+			</GameGenreContainer>
+			{Object.entries(GameGenre).map(([key, value]) => (
+				<GameGenreContainer key={key}>
+					<GameGenreTitle>{value}</GameGenreTitle>
+					<GameListContainer>
+						{filteredGames(key).map((game) => (
+							<GameListItem key={game.id} game={game} />
+						))}
+					</GameListContainer>
+				</GameGenreContainer>
+			))}
 		</>
 	);
 }
