@@ -5,7 +5,6 @@ import type { GameInfoType } from "~/game-info";
 const GameGenreContainer = styled.div`
     display: flex;
     flex-direction: column;
-    max-width: 960px;
     margin: 0 auto;
     gap: 16px;
     padding: 16px;
