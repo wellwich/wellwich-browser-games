@@ -14,6 +14,9 @@ export default function Home() {
 		<>
 			<Title>Home</Title>
 			<p>Welcome to the home page!</p>
+			<a href="/games">
+				<p>Go to game page</p>
+			</a>
 		</>
 	);
 }
