@@ -1,3 +1,4 @@
+import { Title } from "~/components/shared/Title";
 import type { Route } from "./+types/about";
 
 // biome-ignore lint/correctness/noEmptyPattern: <explanation>
@@ -11,9 +12,8 @@ export function meta({}: Route.MetaArgs) {
 export default function About({ loaderData }: Route.ComponentProps) {
 	return (
 		<>
-			<h1>About</h1>
+			<Title>About</Title>
 			<p>Welcome to the about page!</p>
-			<p>{}</p>
 		</>
 	);
 }

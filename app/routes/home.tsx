@@ -1,4 +1,4 @@
-import { GameList } from "~/components/Game/GameList";
+import { Title } from "~/components/shared/Title";
 import type { Route } from "./+types/home";
 
 // biome-ignore lint/correctness/noEmptyPattern: <explanation>
@@ -12,8 +12,8 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
 	return (
 		<>
-			<h1>Welcome to React Router!</h1>
-			<GameList />
+			<Title>Home</Title>
+			<p>Welcome to the home page!</p>
 		</>
 	);
 }

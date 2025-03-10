@@ -5,7 +5,7 @@ import type { Route } from "./+types/layout";
 
 const Container = styled.div`
 	max-width: 960px;
-	margin: 0 auto;
+	margin: 32px auto;
 `;
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {}
