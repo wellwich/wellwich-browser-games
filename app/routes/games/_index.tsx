@@ -13,7 +13,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Index() {
 	return (
 		<>
-			<Title>ゲームサイトです</Title>
+			<Title>ゲーム一覧</Title>
 			<GameList />
 		</>
 	);
