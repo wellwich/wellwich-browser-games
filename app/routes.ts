@@ -9,6 +9,7 @@ export default [
 	layout("./routes/shared/layout.tsx", [
 		index("./routes/home.tsx"),
 		route("about", "./routes/about.tsx"),
+		route("contact", "./routes/contact.tsx"),
 		route("games/:name", "./routes/games/game.tsx"),
 		route("games", "./routes/games/_index.tsx"),
 	]),
