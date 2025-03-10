@@ -18,6 +18,10 @@ const GameListContainer = styled.div`
     justify-content: start;
     padding: 16px;
 
+    @media (max-width: 960px) {
+        justify-content: center;
+    }
+
     @media (max-width: 640px) {
         padding: 16px;
         display: grid;
@@ -35,7 +39,8 @@ const GameListItemContainer = styled.div`
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.2s;
-    width: 192px;
+    max-width: 192px;
+    width: 100%;
     text-align: center;
 
     &:hover {
@@ -61,8 +66,11 @@ const GameLink = styled.a`
 const GameThumbnail = styled.img`
     border-radius: 8px;
     margin-bottom: 16px;
-    width: 180px;
-    height: 180px;
+    max-width: 180px;
+    max-height: 180px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 `;
 
 const GameStyledTitle = styled.h4`

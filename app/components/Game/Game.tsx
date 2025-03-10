@@ -83,6 +83,14 @@ const StartButton = styled.button`
 	&:hover {
 		background-color: #333;
 	}
+
+	@media (max-width: 640px) {
+		font-size: 24px;
+	}
+
+	@media (max-width: 480px) {
+		font-size: 20px;
+	}
 `;
 
 const GameIframeStyled = styled.iframe`
@@ -170,11 +178,7 @@ export function GameThumbnail({
 				onLoad={() => setIsImageLoaded(true)}
 			/>
 			{isImageLoaded && (
-				<StartButton onClick={startGame}>
-					！音量注意！
-					<br />
-					＞スタート＜
-				</StartButton>
+				<StartButton onClick={startGame}>ゲームを開始する</StartButton>
 			)}
 		</>
 	) : null;
