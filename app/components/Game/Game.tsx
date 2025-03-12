@@ -197,7 +197,7 @@ export function GameIframe({
 		<GameIframeStyled
 			ref={iframeRef}
 			key={iframeKey}
-			src={`https://assets.wellwi.ch/games/${gameName}/index.html`}
+			src={`https://assets.wellwich.com/games/${gameName}/index.html`}
 			title={gameName}
 			width={iframeSize.width}
 			height={iframeSize.height}
@@ -332,7 +332,7 @@ export function Game({ gameName }: { gameName: GameTitleType }) {
 		setIsStarted(true);
 	}, []);
 
-	const thumbnail = `https://assets.wellwi.ch/games/${gameName}/img/thumb.jpg`;
+	const thumbnail = `https://assets.wellwich.com/games/${gameName}/img/thumb.jpg`;
 
 	return (
 		<GameContainer>

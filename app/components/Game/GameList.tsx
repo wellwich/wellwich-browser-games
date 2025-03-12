@@ -117,7 +117,7 @@ export function GameListItem({ game }: { game: GameInfoType }) {
 		<GameListItemContainer>
 			<GameLink href={`/games/${game.name}`}>
 				<GameThumbnail
-					src={`https://assets.wellwi.ch/games/${game.name}/img/icon.png`}
+					src={`https://assets.wellwich.com/games/${game.name}/img/icon.png`}
 					alt={`${game.name} thumbnail`}
 				/>
 				<GameStyledTitle>{GameTitle[game.name]}</GameStyledTitle>
