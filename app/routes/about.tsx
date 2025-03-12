@@ -4,7 +4,7 @@ import type { Route } from "./+types/about";
 // biome-ignore lint/correctness/noEmptyPattern: <explanation>
 export function meta({}: Route.MetaArgs) {
 	return [
-		{ title: "About - ブラウザゲームセンター「ゑぅ」" },
+		{ title: "About - WELLWICH" },
 		{ name: "description", content: "このサイトについてのページです。" },
 	];
 }
@@ -13,7 +13,10 @@ export default function About({ loaderData }: Route.ComponentProps) {
 	return (
 		<>
 			<Title>About</Title>
-			<p>Welcome to the about page!</p>
+			<p>
+				<strong>このサイトについて:</strong>
+				このサイトは、WELLWICHのゲームを公開しているサイトです。
+			</p>
 		</>
 	);
 }

@@ -6,7 +6,7 @@ const GameGenreContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    gap: 16px;
+    gap: 8px;
     padding: 16px;
     justify-content: center;
 `;
@@ -35,7 +35,6 @@ const GameListItemContainer = styled.div`
     flex-direction: column;
     align-items: center;
     background-color: white;
-    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.2s;
@@ -51,7 +50,6 @@ const GameListItemContainer = styled.div`
 
 const GameGenreTitle = styled.h3`
     font-size: 24px;
-    margin-bottom: 16px;
 `;
 
 const GameLink = styled.a`
@@ -64,7 +62,6 @@ const GameLink = styled.a`
 `;
 
 const GameThumbnail = styled.img`
-    border-radius: 8px;
     margin-bottom: 16px;
     max-width: 180px;
     max-height: 180px;
@@ -75,7 +72,6 @@ const GameThumbnail = styled.img`
 
 const GameStyledTitle = styled.h4`
     font-size: 20px;
-    margin-bottom: 8px;
 `;
 
 const GameReleaseDate = styled.p`
@@ -125,8 +121,6 @@ export function GameListItem({ game }: { game: GameInfoType }) {
 					alt={`${game.name} thumbnail`}
 				/>
 				<GameStyledTitle>{GameTitle[game.name]}</GameStyledTitle>
-				<GameReleaseDate>{game.releaseDate}</GameReleaseDate>
-				<GameStyledGenre>{GameGenre[game.genre]}</GameStyledGenre>
 			</GameLink>
 		</GameListItemContainer>
 	);

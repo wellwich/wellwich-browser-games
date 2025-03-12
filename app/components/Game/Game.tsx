@@ -41,7 +41,6 @@ const IconButtonStyled = styled.button`
         width: 36px;
         height: 36px;
         padding: 8px;
-        border-radius: 4px;
         background-color: gray;
     }
 `;
@@ -74,12 +73,11 @@ const StartButton = styled.button`
     font-size: 32px;
     background-color: #4a4a4a;
     color: white;
-    font-weight: bold;
     border: none;
     cursor: pointer;
     outline: none;
-    border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	font-family: 'MaruMonica';
 	&:hover {
 		background-color: #333;
 	}
@@ -211,7 +209,6 @@ export function GameIframe({
 const GameInfoContainer = styled.div`
     padding: 16px;
     background-color: #f9f9f9;
-    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 16px;
 `;

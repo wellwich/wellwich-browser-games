@@ -5,7 +5,7 @@ import type { Route } from "./+types/_index";
 // biome-ignore lint/correctness/noEmptyPattern: <explanation>
 export function meta({}: Route.MetaArgs) {
 	return [
-		{ title: "Games | ブラウザゲームセンター「ゑぅ」" },
+		{ title: "Games | WELLWICH" },
 		{ name: "description", content: "ゲーム一覧ページです。" },
 	];
 }
@@ -13,7 +13,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Index() {
 	return (
 		<>
-			<Title>ゲーム一覧</Title>
+			<Title>Games</Title>
 			<GameList />
 		</>
 	);
