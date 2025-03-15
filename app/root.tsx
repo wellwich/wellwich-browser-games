@@ -19,6 +19,8 @@ const GlobalStyles = createGlobalStyle`
   
   body {
 	font-family: "MaruMonica";
+	-webkit-font-smoothing: none;
+	-moz-osx-font-smoothing: unset;
   }
   /* ここに追加したいグローバルCSSを記述する */
 `;
