@@ -64,8 +64,8 @@ const GameLink = styled.a`
 
 const GameThumbnail = styled.img`
     margin-bottom: 16px;
-    max-width: 180px;
-    max-height: 180px;
+    width: 180px;
+    height: 180px;
     width: 100%;
     height: 100%;
     object-fit: cover;
