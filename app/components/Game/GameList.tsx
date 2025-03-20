@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { GameGenre, GameTitle, gameInfo } from "~/game-info";
 import type { GameInfoType } from "~/game-info";
@@ -41,7 +42,6 @@ const GameListItemContainer = styled.div`
     max-width: 192px;
     width: 100%;
     text-align: center;
-    min-height: 260px;
 
     &:hover {
         transform: scale(1.05);
@@ -64,11 +64,34 @@ const GameLink = styled.a`
 
 const GameThumbnail = styled.img`
     margin-bottom: 16px;
-    width: 180px;
-    height: 180px;
+    max-width: 180px;
+    max-height: 180px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    display: block;
 `;
+
+const GameThumbnailWrapper = styled.div<{ isLoaded: boolean }>`
+    position: relative;
+    max-width: 180px;
+    max-height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    img {
+        opacity: ${(props) => (props.isLoaded ? 1 : 0)};
+        transition: opacity 0.3s ease-in-out;
+    }
+`;
+
+const Placeholder = styled.div`
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+`;
+
 const GameStyledTitle = styled.h4`
     font-size: 20px;
 `;
@@ -112,13 +135,20 @@ export function GameList() {
 }
 
 export function GameListItem({ game }: { game: GameInfoType }) {
+	const [isLoaded, setIsLoaded] = useState(false);
+
 	return (
 		<GameListItemContainer>
 			<GameLink href={`/games/${game.name}`}>
-				<GameThumbnail
-					src={`https://assets.wellwich.com/games/${game.name}/img/icon.png`}
-					alt={`${game.name} thumbnail`}
-				/>
+				<GameThumbnailWrapper isLoaded={isLoaded}>
+					{!isLoaded && <Placeholder />}
+					<GameThumbnail
+						src={`https://assets.wellwich.com/games/${game.name}/img/icon.png`}
+						alt={`${game.name} thumbnail`}
+						onLoad={() => setIsLoaded(true)}
+						onError={() => setIsLoaded(true)} // エラー時もプレースホルダーを非表示にする
+					/>
+				</GameThumbnailWrapper>
 				<GameStyledTitle>{GameTitle[game.name]}</GameStyledTitle>
 			</GameLink>
 		</GameListItemContainer>
