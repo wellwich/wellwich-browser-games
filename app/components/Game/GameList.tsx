@@ -41,6 +41,7 @@ const GameListItemContainer = styled.div`
     max-width: 192px;
     width: 100%;
     text-align: center;
+    min-height: 260px;
 
     &:hover {
         transform: scale(1.05);
@@ -63,13 +64,11 @@ const GameLink = styled.a`
 
 const GameThumbnail = styled.img`
     margin-bottom: 16px;
-    max-width: 180px;
-    max-height: 180px;
-    width: 100%;
-    height: 100%;
+    width: 180px;
+    height: 180px;
     object-fit: cover;
+    display: block;
 `;
-
 const GameStyledTitle = styled.h4`
     font-size: 20px;
 `;
