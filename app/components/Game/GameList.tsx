@@ -62,34 +62,30 @@ const GameLink = styled.a`
     align-items: center;
 `;
 
-const GameThumbnail = styled.img`
+const GameThumbnail = styled.div`
     margin-bottom: 16px;
-    width: 180px;
-    height: 180px;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-`;
-
-const GameThumbnailWrapper = styled.div<{ isLoaded: boolean }>`
-    position: relative;
     max-width: 180px;
     max-height: 180px;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    position: relative;
 
     img {
-        opacity: ${(props) => (props.isLoaded ? 1 : 0)};
-        transition: opacity 0.3s ease-in-out;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 `;
 
-const Placeholder = styled.div`
+// cssだけでローディング スピナー　アニメーションを実装する
+// 画像は擬似要素で作成する
+const Placeholder = styled.img`
+    visibility: hidden;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
 `;
 
 const GameStyledTitle = styled.h4`
@@ -140,15 +136,17 @@ export function GameListItem({ game }: { game: GameInfoType }) {
 	return (
 		<GameListItemContainer>
 			<GameLink href={`/games/${game.name}`}>
-				<GameThumbnailWrapper isLoaded={isLoaded}>
-					{!isLoaded && <Placeholder />}
-					<GameThumbnail
+				<GameThumbnail>
+					{!isLoaded && (
+						<Placeholder width="180" height="180" alt="Loading thumbnail" />
+					)}
+					<img
 						src={`https://assets.wellwich.com/games/${game.name}/img/icon.png`}
 						alt={`${game.name} thumbnail`}
-						onLoad={() => setIsLoaded(true)}
-						onError={() => setIsLoaded(true)} // エラー時もプレースホルダーを非表示にする
+						onLoad={() => setIsLoaded(true)} // 画像が読み込まれたら isLoaded を true に設定
+						style={{ display: isLoaded ? "block" : "none" }} // 読み込み完了後に表示
 					/>
-				</GameThumbnailWrapper>
+				</GameThumbnail>
 				<GameStyledTitle>{GameTitle[game.name]}</GameStyledTitle>
 			</GameLink>
 		</GameListItemContainer>
