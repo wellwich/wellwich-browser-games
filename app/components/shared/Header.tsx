@@ -56,7 +56,6 @@ const HeaderNavLink = styled.a`
     font-size: 16px;
     text-decoration: none;
     color: inherit;
-    width: 100%;
     padding: 8px;
     transition: background-color 0.3s;
 	border: 1px solid dimgray;
