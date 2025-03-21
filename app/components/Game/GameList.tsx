@@ -89,7 +89,7 @@ const Placeholder = styled.img`
 `;
 
 const GameStyledTitle = styled.h4`
-    font-size: 24px;
+    font-size: 16px;
 `;
 
 const GameReleaseDate = styled.p`

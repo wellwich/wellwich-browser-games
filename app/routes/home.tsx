@@ -21,7 +21,7 @@ const Container = styled.div`
 `;
 
 const Description = styled.p`
-    font-size: 18px;
+    font-size: 16px;
     color: #333;
     margin: 16px 0;
     text-align: center;
