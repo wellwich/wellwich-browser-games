@@ -253,6 +253,43 @@ export function GameInfo({ gameName }: { gameName: GameTitleType }) {
 	);
 }
 
+const IframeContainer = styled.div`
+    position: relative; /* AdBox の絶対位置を基準にする */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0 auto;
+    max-width: 1400px;
+
+    @media (max-width: 1400px) {
+        flex-direction: column; /* モバイルでは縦並びに変更 */
+        align-items: center;
+    }
+`;
+
+const AdBox = styled.div`
+    position: absolute; /* 絶対位置に配置 */
+    top: 0;
+    width: 180px; /* アドセンスの幅を広げる */
+    height: 600px; /* アドセンスの高さ */
+    background-color: #f1f1f1; /* 背景色（必要に応じて変更） */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.left {
+        left: -200px; /* 左側に配置 (幅を広げた分調整) */
+    }
+
+    &.right {
+        right: -200px; /* 右側に配置 (幅を広げた分調整) */
+    }
+
+    @media (max-width: 1400px) {
+        display: none; /* モバイルでは非表示 */
+    }
+`;
+
 export function Game({ gameName }: { gameName: GameTitleType }) {
 	const [iframeKey, setIframeKey] = useState(0);
 	const [iframeSize, setIframeSize] = useState({ width: 0, height: 0 });
@@ -335,51 +372,75 @@ export function Game({ gameName }: { gameName: GameTitleType }) {
 	const thumbnail = `https://assets.wellwich.com/games/${gameName}/img/thumb.jpg`;
 
 	return (
-		<GameContainer>
-			<div
-				ref={containerRef}
-				role="application"
-				style={{
-					maxWidth: "960px",
-					margin: "0 auto",
-					width: "100%",
-					backgroundColor: "white",
-				}}
-			>
-				<div
-					style={{
-						display: "flex",
-						justifyContent: "center",
-						margin: "0 auto",
-						position: "relative",
-					}}
-				>
-					<GameThumbnail
-						thumbnail={thumbnail}
-						iframeSize={iframeSize}
-						isStarted={isStarted}
-						startGame={startGame}
-						isImageLoaded={isImageLoaded}
-						setIsImageLoaded={setIsImageLoaded}
+		<>
+			<IframeContainer>
+				<AdBox className="left">
+					<ins
+						className="adsbygoogle"
+						style={{ display: "block", width: "180px", height: "600px" }}
+						data-ad-client="ca-pub-8261685347087628"
+						data-ad-slot="7980557637"
+						data-ad-format="auto"
+						data-full-width-responsive="true"
 					/>
-					{isStarted && (
-						<GameIframe
-							iframeKey={iframeKey}
-							iframeSize={iframeSize}
-							gameName={gameName}
-							iframeRef={iframeRef as RefObject<HTMLIFrameElement>}
+				</AdBox>
+				<GameContainer>
+					<div
+						ref={containerRef}
+						role="application"
+						style={{
+							maxWidth: "960px",
+							margin: "0 auto",
+							width: "100%",
+							backgroundColor: "white",
+						}}
+					>
+						<div
+							style={{
+								display: "flex",
+								justifyContent: "center",
+								margin: "0 auto",
+								position: "relative",
+							}}
+						>
+							<GameThumbnail
+								thumbnail={thumbnail}
+								iframeSize={iframeSize}
+								isStarted={isStarted}
+								startGame={startGame}
+								isImageLoaded={isImageLoaded}
+								setIsImageLoaded={setIsImageLoaded}
+							/>
+							{isStarted && (
+								<GameIframe
+									iframeKey={iframeKey}
+									iframeSize={iframeSize}
+									gameName={gameName}
+									iframeRef={iframeRef as RefObject<HTMLIFrameElement>}
+								/>
+							)}
+						</div>
+						<GameOptions
+							isImageLoaded={isImageLoaded}
+							isEnlarged={isEnlarged}
+							toggleIframeSize={toggleIframeSize}
+							reloadIframe={reloadIframe}
+							toggleFullscreen={toggleFullscreen}
 						/>
-					)}
-				</div>
-				<GameOptions
-					isImageLoaded={isImageLoaded}
-					isEnlarged={isEnlarged}
-					toggleIframeSize={toggleIframeSize}
-					reloadIframe={reloadIframe}
-					toggleFullscreen={toggleFullscreen}
-				/>
-			</div>
-			<GameInfo gameName={gameName} />
-		</GameContainer>
+					</div>
+					<GameInfo gameName={gameName} />
+				</GameContainer>
+				<AdBox className="right">
+					<ins
+						className="adsbygoogle"
+						style={{ display: "block", width: "180px", height: "600px" }}
+						data-ad-client="ca-pub-8261685347087628"
+						data-ad-slot="7980557637"
+						data-ad-format="auto"
+						data-full-width-responsive="true"
+					/>
+				</AdBox>
+			</IframeContainer>
+		</>
 	);
 }
