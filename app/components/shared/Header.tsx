@@ -19,12 +19,14 @@ const HeaderContainer = styled.div<{ $color?: string }>`
     width: 100%;
     margin: 0 auto;
     flex-direction: row;
-    align-items: start;
+    align-items: center; // 中央揃え
+    justify-content: space-between; // タイトルとボタンを左右に分ける
+    position: relative;
 
-	background-color: ${({ $color }) => $color || "transparent"};
+    background-color: ${({ $color }) => $color || "transparent"};
 
     @media (max-width: 640px) {
-        flex-direction: column;
+        flex-direction: row; // スマホでも横並び
     }
 `;
 
@@ -76,13 +78,9 @@ const HamburgerButton = styled.button`
     border: none;
     cursor: pointer;
     font-size: 24px;
-    margin-left: auto;
 
     @media (max-width: 640px) {
-        display: block;
-		position: absolute;
-		top: 16px;
-		right: 16px;
+        display: block; // スマホ表示時に表示
     }
 `;
 
