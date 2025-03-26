@@ -377,7 +377,7 @@ export function Game({ gameName }: { gameName: GameTitleType }) {
 				<AdBox className="left">
 					<ins
 						className="adsbygoogle"
-						style={{ display: "block", width: "240px", height: "700px" }}
+						style={{ display: "block" }}
 						data-ad-client="ca-pub-8261685347087628"
 						data-ad-slot="7980557637"
 						data-ad-format="auto"
@@ -433,7 +433,7 @@ export function Game({ gameName }: { gameName: GameTitleType }) {
 				<AdBox className="right">
 					<ins
 						className="adsbygoogle"
-						style={{ display: "block", width: "240px", height: "700px" }}
+						style={{ display: "block" }}
 						data-ad-client="ca-pub-8261685347087628"
 						data-ad-slot="7980557637"
 						data-ad-format="auto"
