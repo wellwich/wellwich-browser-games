@@ -270,19 +270,19 @@ const IframeContainer = styled.div`
 const AdBox = styled.div`
     position: absolute; /* 絶対位置に配置 */
     top: 0;
-    width: 180px; /* アドセンスの幅を広げる */
-    height: 600px; /* アドセンスの高さ */
+    width: 240px; /* アドセンスの幅を広げる */
+    height: 700px; /* アドセンスの高さ */
     background-color: #f1f1f1; /* 背景色（必要に応じて変更） */
     display: flex;
     justify-content: center;
     align-items: center;
 
     &.left {
-        left: -200px; /* 左側に配置 (幅を広げた分調整) */
+        left: -260px; /* 左側に配置 (幅を広げた分調整) */
     }
 
     &.right {
-        right: -200px; /* 右側に配置 (幅を広げた分調整) */
+        right: -260px; /* 右側に配置 (幅を広げた分調整) */
     }
 
     @media (max-width: 1400px) {
@@ -377,7 +377,7 @@ export function Game({ gameName }: { gameName: GameTitleType }) {
 				<AdBox className="left">
 					<ins
 						className="adsbygoogle"
-						style={{ display: "block", width: "180px", height: "600px" }}
+						style={{ display: "block", width: "240px", height: "700px" }}
 						data-ad-client="ca-pub-8261685347087628"
 						data-ad-slot="7980557637"
 						data-ad-format="auto"
@@ -433,7 +433,7 @@ export function Game({ gameName }: { gameName: GameTitleType }) {
 				<AdBox className="right">
 					<ins
 						className="adsbygoogle"
-						style={{ display: "block", width: "180px", height: "600px" }}
+						style={{ display: "block", width: "240px", height: "700px" }}
 						data-ad-client="ca-pub-8261685347087628"
 						data-ad-slot="7980557637"
 						data-ad-format="auto"
