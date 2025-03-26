@@ -374,16 +374,6 @@ export function Game({ gameName }: { gameName: GameTitleType }) {
 	return (
 		<>
 			<IframeContainer>
-				<AdBox className="left">
-					<ins
-						className="adsbygoogle"
-						style={{ display: "block" }}
-						data-ad-client="ca-pub-8261685347087628"
-						data-ad-slot="7980557637"
-						data-ad-format="auto"
-						data-full-width-responsive="true"
-					/>
-				</AdBox>
 				<GameContainer>
 					<div
 						ref={containerRef}
@@ -430,16 +420,6 @@ export function Game({ gameName }: { gameName: GameTitleType }) {
 					</div>
 					<GameInfo gameName={gameName} />
 				</GameContainer>
-				<AdBox className="right">
-					<ins
-						className="adsbygoogle"
-						style={{ display: "block" }}
-						data-ad-client="ca-pub-8261685347087628"
-						data-ad-slot="7980557637"
-						data-ad-format="auto"
-						data-full-width-responsive="true"
-					/>
-				</AdBox>
 			</IframeContainer>
 		</>
 	);
