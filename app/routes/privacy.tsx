@@ -19,12 +19,12 @@ const Section = styled.section`
 `;
 
 const Heading2 = styled.h2`
-    font-size: 1.5em;
+    font-size: 24px;
     margin-bottom: 10px;
 `;
 
 const Heading3 = styled.h3`
-    font-size: 1.2em;
+    font-size: 16px;
     margin-bottom: 10px;
 `;
 
