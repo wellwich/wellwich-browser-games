@@ -290,28 +290,6 @@ const AdBox = styled.div`
     }
 `;
 
-export function AdBoxWithScript({ className }: { className: string }) {
-	return (
-		<AdBox className={className}>
-			<div
-				id="div-gpt-ad-1742975129086-0"
-				style={{ minWidth: "120px", minHeight: "240px" }}
-			>
-				<script
-					// biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
-					dangerouslySetInnerHTML={{
-						__html: `
-                            googletag.cmd.push(function() { 
-                                googletag.display('div-gpt-ad-1742975129086-0'); 
-                            });
-                        `,
-					}}
-				/>
-			</div>
-		</AdBox>
-	);
-}
-
 export function Game({ gameName }: { gameName: GameTitleType }) {
 	const [iframeKey, setIframeKey] = useState(0);
 	const [iframeSize, setIframeSize] = useState({ width: 0, height: 0 });
@@ -396,7 +374,16 @@ export function Game({ gameName }: { gameName: GameTitleType }) {
 	return (
 		<>
 			<IframeContainer>
-				<AdBoxWithScript className="left" />
+				<AdBox className="left">
+					<ins
+						className="adsbygoogle"
+						style={{ display: "block" }}
+						data-ad-client="ca-pub-8261685347087628"
+						data-ad-slot="7980557637"
+						data-ad-format="auto"
+						data-full-width-responsive="true"
+					/>
+				</AdBox>
 				<GameContainer>
 					<div
 						ref={containerRef}
@@ -443,7 +430,16 @@ export function Game({ gameName }: { gameName: GameTitleType }) {
 					</div>
 					<GameInfo gameName={gameName} />
 				</GameContainer>
-				<AdBoxWithScript className="right" />
+				<AdBox className="right">
+					<ins
+						className="adsbygoogle"
+						style={{ display: "block" }}
+						data-ad-client="ca-pub-8261685347087628"
+						data-ad-slot="7980557637"
+						data-ad-format="auto"
+						data-full-width-responsive="true"
+					/>
+				</AdBox>
 			</IframeContainer>
 		</>
 	);
