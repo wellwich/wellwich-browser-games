@@ -259,9 +259,9 @@ const IframeContainer = styled.div`
     justify-content: center;
     align-items: flex-start;
     margin: 0 auto;
-    max-width: 1400px;
+    max-width: 960px;
 
-    @media (max-width: 1400px) {
+    @media (max-width: 960px) {
         flex-direction: column; /* モバイルでは縦並びに変更 */
         align-items: center;
     }
@@ -285,7 +285,7 @@ const AdBox = styled.div`
         right: -260px; /* 右側に配置 (幅を広げた分調整) */
     }
 
-    @media (max-width: 1400px) {
+    @media (max-width: 960px) {
         display: none; /* モバイルでは非表示 */
     }
 `;
