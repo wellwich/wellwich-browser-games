@@ -13,12 +13,6 @@ import {
 	gameInfo,
 } from "~/game-info";
 
-declare global {
-	interface Window {
-		adsbygoogle: unknown[]; // Google AdSense の型定義
-	}
-}
-
 const defaultWidth = 960;
 const optionsHeight = 72;
 
@@ -368,13 +362,6 @@ export function Game({ gameName }: { gameName: GameTitleType }) {
 	useEffect(() => {
 		if (typeof window !== "undefined") {
 			setIsNarrowScreen(window.innerWidth < defaultWidth);
-		}
-	}, []);
-
-	useEffect(() => {
-		if (typeof window !== "undefined" && window.adsbygoogle) {
-			window.adsbygoogle = window.adsbygoogle || [];
-			window.adsbygoogle.push({});
 		}
 	}, []);
 
