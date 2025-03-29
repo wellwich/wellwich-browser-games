@@ -21,6 +21,7 @@ export const GameTitle = {
 	"calc-only-add": "1桁足し算",
 	invaders: "インベーダー",
 	"color-tiles": "カラータイル",
+	"four-colors": "4色",
 } as const;
 
 export type GameTitleType = keyof typeof GameTitle;
@@ -59,5 +60,14 @@ export const gameInfo = [
 		genre: "puzzle",
 		engine: "Phaser",
 		pcOnly: false,
+	},
+	{
+		id: 5,
+		name: "four-colors",
+		releaseDate: "2025-03-29",
+		genre: "puzzle",
+		engine: "Akashic Engine",
+		pcOnly: false,
+		infoUrl: "https://namagame.coe.nicovideo.jp/games/lg11129",
 	},
 ] satisfies GameInfoType[];
