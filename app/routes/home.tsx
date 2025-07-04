@@ -5,10 +5,10 @@ import type { Route } from "./+types/home";
 // biome-ignore lint/correctness/noEmptyPattern: <explanation>
 export function meta({}: Route.MetaArgs) {
 	return [
-		{ title: "ブラウザゲームセンター「ゑぅ」" },
+		{ title: "WELLWICH" },
 		{
 			name: "description",
-			content: "ブラウザゲームが遊べるゲームサイトです。",
+			content: "ゲームを公開しています",
 		},
 	];
 }
@@ -21,7 +21,7 @@ const Container = styled.div`
 `;
 
 const Description = styled.p`
-    font-size: 18px;
+    font-size: 16px;
     color: #333;
     margin: 16px 0;
     text-align: center;
@@ -31,27 +31,41 @@ const LinkButton = styled.a`
     display: inline-block;
     padding: 12px 24px;
     margin-top: 16px;
-    background-color: #0070f3;
+    background-color: dimgray;
     color: white;
     text-decoration: none;
-    border-radius: 8px;
     transition: background-color 0.3s;
 
     &:hover {
-        background-color: #005bb5;
+        background-color: #333;
     }
+`;
+
+const AffiliateContainer = styled.div`
+    margin-top: 20px;
+    text-align: center;
 `;
 
 export default function Home() {
 	return (
 		<Container>
-			<Title>ブラウザゲームセンター「ゑぅ」</Title>
-			<Description>
-				「ゑぅ」へようこそ！ここでは様々なブラウザゲームを無料で楽しむことができます。
-				<br />
-				お気に入りのゲームを見つけて、楽しい時間を過ごしてください。
-			</Description>
+			<Title>WELLWICH</Title>
+			<Description>ゲームを公開しています</Description>
 			<LinkButton href="/games">ゲームページへ</LinkButton>
+			<AffiliateContainer>
+				<a
+					rel="noreferrer noopener sponsored"
+					href="https://dlaf.jp/home/dlaf/=/aid/wellwich/url/https%3A%2F%2Fwww.dlsite.com%2Fhome%2F%3Futm_medium%3Daffiliate%26utm_campaign%3Dbnlink%26utm_content%3Dbn_pc_234_60_dojin_01.jpg"
+					target="_blank"
+				>
+					<img
+						src="https://www.dlsite.com/img/male/dojin/bn_pc_234_60_dojin_01.jpg"
+						alt="同人誌、同人ゲーム、同人ソフトのダウンロードショップ - DLsite"
+						width="234"
+						height="60"
+					/>
+				</a>
+			</AffiliateContainer>
 		</Container>
 	);
 }

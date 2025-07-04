@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { GameGenre, GameTitle, gameInfo } from "~/game-info";
 import type { GameInfoType } from "~/game-info";
@@ -6,7 +7,7 @@ const GameGenreContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    gap: 16px;
+    gap: 8px;
     padding: 16px;
     justify-content: center;
 `;
@@ -35,7 +36,6 @@ const GameListItemContainer = styled.div`
     flex-direction: column;
     align-items: center;
     background-color: white;
-    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.2s;
@@ -51,7 +51,6 @@ const GameListItemContainer = styled.div`
 
 const GameGenreTitle = styled.h3`
     font-size: 24px;
-    margin-bottom: 16px;
 `;
 
 const GameLink = styled.a`
@@ -63,19 +62,34 @@ const GameLink = styled.a`
     align-items: center;
 `;
 
-const GameThumbnail = styled.img`
-    border-radius: 8px;
+const GameThumbnail = styled.div`
     margin-bottom: 16px;
     max-width: 180px;
     max-height: 180px;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+`;
+
+// cssだけでローディング スピナー　アニメーションを実装する
+// 画像は擬似要素で作成する
+const Placeholder = styled.img`
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
 `;
 
 const GameStyledTitle = styled.h4`
-    font-size: 20px;
-    margin-bottom: 8px;
+    font-size: 16px;
 `;
 
 const GameReleaseDate = styled.p`
@@ -117,16 +131,23 @@ export function GameList() {
 }
 
 export function GameListItem({ game }: { game: GameInfoType }) {
+	const [isLoaded, setIsLoaded] = useState(false);
+
 	return (
 		<GameListItemContainer>
 			<GameLink href={`/games/${game.name}`}>
-				<GameThumbnail
-					src={`https://assets.wellwi.ch/games/${game.name}/img/icon.png`}
-					alt={`${game.name} thumbnail`}
-				/>
+				<GameThumbnail>
+					{!isLoaded && (
+						<Placeholder width="180" height="180" alt="Loading thumbnail" />
+					)}
+					<img
+						src={`https://assets.wellwich.com/games/${game.name}/img/icon.png`}
+						alt={`${game.name} thumbnail`}
+						onLoad={() => setIsLoaded(true)} // 画像が読み込まれたら isLoaded を true に設定
+						style={{ display: isLoaded ? "block" : "none" }} // 読み込み完了後に表示
+					/>
+				</GameThumbnail>
 				<GameStyledTitle>{GameTitle[game.name]}</GameStyledTitle>
-				<GameReleaseDate>{game.releaseDate}</GameReleaseDate>
-				<GameStyledGenre>{GameGenre[game.genre]}</GameStyledGenre>
 			</GameLink>
 		</GameListItemContainer>
 	);

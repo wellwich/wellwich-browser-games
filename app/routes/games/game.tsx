@@ -31,7 +31,7 @@ export function meta({ params }: Route.MetaArgs) {
 		{
 			title: `
 			${GameTitle[gameName]} |
-			ブラウザゲームセンター「ゑぅ」
+			WELLWICH
 			`,
 		},
 		{ name: "description", content: GameTitle[gameName] },

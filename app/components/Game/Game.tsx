@@ -41,7 +41,6 @@ const IconButtonStyled = styled.button`
         width: 36px;
         height: 36px;
         padding: 8px;
-        border-radius: 4px;
         background-color: gray;
     }
 `;
@@ -74,12 +73,11 @@ const StartButton = styled.button`
     font-size: 32px;
     background-color: #4a4a4a;
     color: white;
-    font-weight: bold;
     border: none;
     cursor: pointer;
     outline: none;
-    border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	font-family: 'MaruMonica';
 	&:hover {
 		background-color: #333;
 	}
@@ -199,7 +197,7 @@ export function GameIframe({
 		<GameIframeStyled
 			ref={iframeRef}
 			key={iframeKey}
-			src={`https://assets.wellwi.ch/games/${gameName}/index.html`}
+			src={`https://assets.wellwich.com/games/${gameName}/index.html`}
 			title={gameName}
 			width={iframeSize.width}
 			height={iframeSize.height}
@@ -211,7 +209,6 @@ export function GameIframe({
 const GameInfoContainer = styled.div`
     padding: 16px;
     background-color: #f9f9f9;
-    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 16px;
 `;
@@ -255,6 +252,43 @@ export function GameInfo({ gameName }: { gameName: GameTitleType }) {
 		</GameInfoContainer>
 	);
 }
+
+const IframeContainer = styled.div`
+    position: relative; /* AdBox の絶対位置を基準にする */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0 auto;
+    max-width: 960px;
+
+    @media (max-width: 960px) {
+        flex-direction: column; /* モバイルでは縦並びに変更 */
+        align-items: center;
+    }
+`;
+
+const AdBox = styled.div`
+    position: absolute; /* 絶対位置に配置 */
+    top: 0;
+    width: 240px; /* アドセンスの幅を広げる */
+    height: 700px; /* アドセンスの高さ */
+    background-color: #f1f1f1; /* 背景色（必要に応じて変更） */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.left {
+        left: -260px; /* 左側に配置 (幅を広げた分調整) */
+    }
+
+    &.right {
+        right: -260px; /* 右側に配置 (幅を広げた分調整) */
+    }
+
+    @media (max-width: 960px) {
+        display: none; /* モバイルでは非表示 */
+    }
+`;
 
 export function Game({ gameName }: { gameName: GameTitleType }) {
 	const [iframeKey, setIframeKey] = useState(0);
@@ -335,54 +369,58 @@ export function Game({ gameName }: { gameName: GameTitleType }) {
 		setIsStarted(true);
 	}, []);
 
-	const thumbnail = `https://assets.wellwi.ch/games/${gameName}/img/thumb.jpg`;
+	const thumbnail = `https://assets.wellwich.com/games/${gameName}/img/thumb.jpg`;
 
 	return (
-		<GameContainer>
-			<div
-				ref={containerRef}
-				role="application"
-				style={{
-					maxWidth: "960px",
-					margin: "0 auto",
-					width: "100%",
-					backgroundColor: "white",
-				}}
-			>
-				<div
-					style={{
-						display: "flex",
-						justifyContent: "center",
-						margin: "0 auto",
-						position: "relative",
-					}}
-				>
-					<GameThumbnail
-						thumbnail={thumbnail}
-						iframeSize={iframeSize}
-						isStarted={isStarted}
-						startGame={startGame}
-						isImageLoaded={isImageLoaded}
-						setIsImageLoaded={setIsImageLoaded}
-					/>
-					{isStarted && (
-						<GameIframe
-							iframeKey={iframeKey}
-							iframeSize={iframeSize}
-							gameName={gameName}
-							iframeRef={iframeRef as RefObject<HTMLIFrameElement>}
+		<>
+			<IframeContainer>
+				<GameContainer>
+					<div
+						ref={containerRef}
+						role="application"
+						style={{
+							maxWidth: "960px",
+							margin: "0 auto",
+							width: "100%",
+							backgroundColor: "white",
+						}}
+					>
+						<div
+							style={{
+								display: "flex",
+								justifyContent: "center",
+								margin: "0 auto",
+								position: "relative",
+							}}
+						>
+							<GameThumbnail
+								thumbnail={thumbnail}
+								iframeSize={iframeSize}
+								isStarted={isStarted}
+								startGame={startGame}
+								isImageLoaded={isImageLoaded}
+								setIsImageLoaded={setIsImageLoaded}
+							/>
+							{isStarted && (
+								<GameIframe
+									iframeKey={iframeKey}
+									iframeSize={iframeSize}
+									gameName={gameName}
+									iframeRef={iframeRef as RefObject<HTMLIFrameElement>}
+								/>
+							)}
+						</div>
+						<GameOptions
+							isImageLoaded={isImageLoaded}
+							isEnlarged={isEnlarged}
+							toggleIframeSize={toggleIframeSize}
+							reloadIframe={reloadIframe}
+							toggleFullscreen={toggleFullscreen}
 						/>
-					)}
-				</div>
-				<GameOptions
-					isImageLoaded={isImageLoaded}
-					isEnlarged={isEnlarged}
-					toggleIframeSize={toggleIframeSize}
-					reloadIframe={reloadIframe}
-					toggleFullscreen={toggleFullscreen}
-				/>
-			</div>
-			<GameInfo gameName={gameName} />
-		</GameContainer>
+					</div>
+					<GameInfo gameName={gameName} />
+				</GameContainer>
+			</IframeContainer>
+		</>
 	);
 }

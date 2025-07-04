@@ -1,4 +1,4 @@
-name = "wellwich-games-ssg"
+name = "wellwich-browser-games"
 compatibility_date = "2024-11-06"
 main = "./worker.ts"
 assets = { directory = "./build/client" }

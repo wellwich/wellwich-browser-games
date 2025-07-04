@@ -21,6 +21,7 @@ export const GameTitle = {
 	"calc-only-add": "1桁足し算",
 	invaders: "インベーダー",
 	"color-tiles": "カラータイル",
+	"four-colors": "4色",
 	"unlock-hl": "アンロック H&L",
 } as const;
 
@@ -63,6 +64,15 @@ export const gameInfo = [
 	},
 	{
 		id: 5,
+		name: "four-colors",
+		releaseDate: "2025-03-29",
+		genre: "puzzle",
+		engine: "Akashic Engine",
+		pcOnly: false,
+		infoUrl: "https://namagame.coe.nicovideo.jp/games/lg11129",
+	},
+	{
+		id: 6,
 		name: "unlock-hl",
 		releaseDate: "2025-07-05",
 		genre: "math",

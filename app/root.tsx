@@ -11,6 +11,17 @@ import reset from "styled-reset";
 
 const GlobalStyles = createGlobalStyle`
   ${reset}
+  // カスタムフォントの設定
+  @font-face {
+	font-family: "MaruMonica";
+	src: url("/fonts/x12y16pxMaruMonica.ttf") format("truetype");
+  }
+  
+  body {
+	font-family: "MaruMonica";
+	-webkit-font-smoothing: none;
+	-moz-osx-font-smoothing: unset;
+  }
   /* ここに追加したいグローバルCSSを記述する */
 `;
 
