@@ -21,6 +21,7 @@ export const GameTitle = {
 	"calc-only-add": "1桁足し算",
 	invaders: "インベーダー",
 	"color-tiles": "カラータイル",
+	"unlock-hl": "アンロック H&L",
 } as const;
 
 export type GameTitleType = keyof typeof GameTitle;
@@ -60,4 +61,12 @@ export const gameInfo = [
 		engine: "Phaser",
 		pcOnly: false,
 	},
+	{
+		id: 5,
+		name: "unlock-hl",
+		releaseDate: "2025-07-05",
+		genre: "math",
+		engine: "Phaser",
+		pcOnly: false,
+	}
 ] satisfies GameInfoType[];
